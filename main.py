@@ -6,12 +6,12 @@ def main():
     
     conn = db.creer_connexion(db_file)
   
-    print("creattion des tables")
+    print("creation des tables")
     db.mise_a_jour_bd(conn, "data/db_creation.sql")
-    db.mise_a_jour_bd(conn, "data/db_first_insert.sql")
     
-    print("2. Liste de tous les bateaux")
-    select_tous_les_bateaux(conn)
+    #db.mise_a_jour_bd(conn, "data/db_first_insert.sql")
+    
+    #select_tous_les_bateaux(conn)
 
 
 
@@ -23,3 +23,8 @@ def select_tous_les_bateaux(conn):
     rows = cur.fetchall()
     for row in rows:
         print(row)
+
+
+
+if __name__ == "__main__":
+    main()
