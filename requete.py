@@ -12,6 +12,6 @@ def select_tous_les_bateaux(conn):
 
 
 def get_info_client(conn):
-    input = input("quel est votre nom ?")
+    choix = input("quel est votre nom ?")
 
-    print(f"Voici votre nom {input}")
+    print(f"Voici votre nom {choix}")
