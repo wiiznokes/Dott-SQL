@@ -1,5 +1,4 @@
 
-
 CREATE TABLE Clients (
 	numero_client TEXT(50),
     prenom_client TEXT (50) NOT NULL,
@@ -48,8 +47,8 @@ CREATE TABLE Trottinettes(
 	numero_trottinette INTEGER, 
 	date_fabrication_trottinette date,
 	etat_trottinette TEXT (50)NOT NULL, 
-	nom_modele TEXT (54)NOt NULL, 
-	numero_batterie INTEGER,
+	nom_modele TEXT (54)NOT NULL, 
+	numero_batterie INTEGER NOT NULL,
 	CONSTRAINT pk_trottinette_numero_trottinette PRIMARY KEY(numero_trottinette),
 	CONSTRAINT cu_trottinette_numero_batterie UNIQUE (numero_batterie),
 	CONSTRAINT fk_trottinette_numero_batterie FOREIGN KEY (numero_batterie) 
@@ -69,16 +68,20 @@ CREATE TABLE Locations(
 	 adresse_dep_location TEXT(50), 
 	 adresse_arr_location TEXT(50),  
 	 prixTotal_location REAL, 
-	 numero_client TEXT(50),
+	 numero_client TEXT(50) NOT NULL,
 	 numero_employe INTEGER NOT NULL,
-	 CONSTRAINT pk_locations_numero_location PRIMARY KEY (numero_location)
+	 CONSTRAINT pk_locations_numero_location PRIMARY KEY (numero_location),
+	 CONSTRAINT fk_location_numero_client FOREIGN KEY (numero_client) 
+										REFERENCES Clients (numero_client),
+	 CONSTRAINT fk_locatio_numero_employe FOREIGN KEY (numero_employe) 
+										REFERENCES Employes(numero_employe)
 
 );
 
 CREATE TABLE LocationsTrottinettes(
-	 numero_location INTEGER, 
-	 numero_trottinette INTEGER,
-	 CONSTRAINT cp_LocationsTrottinettes_numero_location_numero_trottinette 
+	numero_location INTEGER, 
+	numero_trottinette INTEGER,
+	CONSTRAINT pk_LocationsTrottinettes_numero_location_numero_trottinette 
 							PRIMARY KEY(numero_location,numero_trottinette),
 	CONSTRAINT fk_LocationsTrottinettes_numero_location FOREIGN KEY(numero_location) 
 							REFERENCES Locations(numero_location),
