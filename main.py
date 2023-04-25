@@ -1,11 +1,19 @@
 from utils import db
 
-def select_tous_les_bateaux(conn):
+def select_tous_les_Clients(conn):
     cur = conn.cursor()
-    cur.execute("SELECT * FROM Bateaux")
+    cur.execute("SELECT * FROM Clients")
     rows = cur.fetchall()
     for row in rows:
         print(row)
+
+def clients_effectue_au_moins_une_Locatitions(conn):
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM Clients JOIN Locations USING(numero_client)")
+    rows = cur.fetchall()
+    for row in rows:
+        print(row)
+
 
 
 
@@ -25,8 +33,8 @@ def main():
         print("/n")
         print("""
         print("MENU PRINCIPAL")  
-        1- Afficher une table
-        2- Afficher une requete
+        1- Afficher les nom de tables
+        2- Afficher les clients qu'on fait au moins une location
         3- Faire insertion
         4- Faire Delete
         5- Quitter""")
@@ -34,10 +42,13 @@ print("*************************************************************************
         print("\n")
         choix = input("saisir un choix")
         if choix =='5':
-              print("Aurevoir")
-              break
+            print("Aurevoir")
+            break
         if choix =='1':
-            
+            print("Clients,Employes,Modeles, Batterie,Trottinette,Location: ")
+            break
+        elif choix =='2':
+                clients_effectue_au_moins_une_Locatitions(conn)
 
 
 
