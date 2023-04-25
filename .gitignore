@@ -1,2 +1,3 @@
-utils/__pycache__
-data/location_trottinette.db
+__pycache__
+*/*.db
+
