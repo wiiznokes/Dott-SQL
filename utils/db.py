@@ -22,6 +22,7 @@ def mise_a_jour_bd(conn: sqlite3.Connection, file: str):
     # Ex ́ecution de toutes les requ^etes du tableau
     cursor = conn.cursor()
     for query in sqlQueries:
+        print(query)
         cursor.execute(query)
     # Validation des modifications
     conn.commit()

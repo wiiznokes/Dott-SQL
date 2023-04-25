@@ -1,4 +1,4 @@
-from utils import db, affichage
+from utils import db, utils
 
 
 import requete
@@ -6,9 +6,12 @@ import requete
 
 db_file = "data/location_trottinette.db"
 
+utils.remove_file(db_file)
+
+
 conn = db.creer_connexion(db_file)
-#db.mise_a_jour_bd(conn, "data/db_creation.sql")
-#db.mise_a_jour_bd(conn, "data/db_first_insert.sql")
+db.mise_a_jour_bd(conn, "data/db_creation.sql")
+db.mise_a_jour_bd(conn, "data/db_first_insert.sql")
 
 
 
@@ -16,7 +19,7 @@ conn = db.creer_connexion(db_file)
 choix = ""
 while choix != "q":
 
-    affichage.clear()
+    utils.clear()
     
     print("******************************************************************************")
     print("                               MENU PRINCIPAL                                  ")
@@ -46,3 +49,4 @@ while choix != "q":
 
 
 
+db.mise_a_jour_bd(conn, "data/db_drop.sql")
