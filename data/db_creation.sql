@@ -68,10 +68,10 @@ CREATE TABLE Trottinettes(
  
 CREATE TABLE Locations(
 	numero_location INTEGER, 
-	date_dep_location date NOT NULL, 
-	date_arr_location date,
+	date_dep_location date NOT NULL,
 	adresse_dep_location TEXT(50) NOT NULL, 
-	adresse_arr_location TEXT(50),  
+	adresse_arr_location TEXT(50),
+	date_arr_location date, 
 	prixTotal_location REAL, 
 	numero_client TEXT(50) NOT NULL,
 	numero_employe INTEGER NOT NULL,

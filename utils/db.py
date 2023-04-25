@@ -13,17 +13,26 @@ def creer_connexion(db_file):
 
 
 def mise_a_jour_bd(conn: sqlite3.Connection, file: str):
-    # Lecture du fichier et placement des requ^etes dans un tableau
     sqlQueries = []
     with open(file, 'r') as f:
         createSql = f.read()
         sqlQueries = createSql.split(";")
 
-    # Ex ́ecution de toutes les requ^etes du tableau
     cursor = conn.cursor()
     for query in sqlQueries:
-        print(query)
+        #print(query)
         cursor.execute(query)
-    # Validation des modifications
+
     conn.commit()
 
+
+
+
+def faire_request(conn: sqlite3.Connection, query: str):
+    #print(query)
+    
+    cur = conn.cursor()
+    cur.execute(query)
+    rows = cur.fetchall()
+    for row in rows:
+        print(row)

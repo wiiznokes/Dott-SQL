@@ -1,6 +1,5 @@
 from utils import db, utils
 
-
 import requete
 
 
@@ -16,13 +15,15 @@ db.mise_a_jour_bd(conn, "data/db_first_insert.sql")
 
 
 
+
+
 choix = ""
 while choix != "q":
 
     utils.clear()
     
     print("******************************************************************************")
-    print("                               MENU PRINCIPAL                                  ")
+    print("                               MENU PRINCIPAL                                 ")
     print("******************************************************************************")
     print("1 - Info client")
     print("2 - Afficher une requête")
