@@ -10,7 +10,7 @@ VALUES (2, "Rousseau", "Lénaic", '2002-11-04', "38 allée d'Ahm");
 
 INSERT INTO Employes 
 VALUES (1, "Montaigné", "Albert", '1991-03-04', "37 allée d'Ahm", 
-"lu: 10h30,12h00, 13h30,17h30 ma:13h30,17h30 me: je: 13h30,17h30 ve:13h30,17h30 sa: di:");
+"10h30,12h00 | 13h30,17h30 : 13h30,17h30 | : | : | 13h30,17h30 : |13h30,17h30 : |: |");
 
 
 INSERT INTO Batteries 
