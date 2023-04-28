@@ -72,7 +72,7 @@ CREATE TABLE Locations(
 	adresse_dep_location TEXT(50) NOT NULL, 
 	adresse_arr_location TEXT(50),
 	date_arr_location date, 
-	prixTotal_location REAL, 
+	--prixTotal_location REAL, 
 	numero_client TEXT(50) NOT NULL,
 	numero_employe INTEGER NOT NULL,
 
@@ -93,4 +93,8 @@ CREATE TABLE LocationsTrottinettes(
 	CONSTRAINT fk_locations_trottinettes_numero_trottinette FOREIGN KEY(numero_trottinette) 
 		REFERENCES Trottinettes(numero_trottinette)				
 );
+
+
+
+
 
