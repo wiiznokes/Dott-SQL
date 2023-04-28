@@ -1,3 +1,4 @@
+
 from utils import db, utils
 
 import requete
@@ -26,9 +27,11 @@ while choix != "q":
     print("                               MENU PRINCIPAL                                 ")
     print("******************************************************************************")
     print("1 - Info client")
-    print("2 - Afficher une requête")
-    print("3 - Faire une insertion")
-    print("4 - Faire un delete")
+    print("2 - Liste des clients qui ont fait au moins une location")
+    print("3 - Nouveau client")
+    print("4 - Creer location")
+    print("5 - Finir location")
+    print("6 - Nom et prénom des clients qui ont loué une trottinette xiaomi")
     print("q - Quitter")
     print("******************************************************************************")
     print("\n")
@@ -40,14 +43,19 @@ while choix != "q":
     if (choix == '1'):
         requete.get_info_client(conn)
     elif (choix == '2'):
-        pass
+        requete.avoir_list_client_au_moins_une_loc(conn)
     elif (choix == '3'):
-        pass
+        requete.nouveau_client(conn)
     elif (choix == '4'):
-        pass
+        requete.creer_location(conn)
+    elif (choix == '6'):
+        requete.client_qui_ont_loue_une_trott_modele_xiaomi(conn)
     elif (choix == 'q'):
         break
 
 
 
 db.mise_a_jour_bd(conn, "data/db_drop.sql")
+
+
+print("Au revoir !")

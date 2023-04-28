@@ -26,6 +26,10 @@ def mise_a_jour_bd(conn: sqlite3.Connection, file: str):
     conn.commit()
 
 
+def faire_update(conn: sqlite3.Connection, query: str):
+    #print(query)
+    cur = conn.cursor()
+    cur.execute(query)
 
 
 def faire_request(conn: sqlite3.Connection, query: str):
@@ -36,3 +40,11 @@ def faire_request(conn: sqlite3.Connection, query: str):
     rows = cur.fetchall()
     for row in rows:
         print(row)
+
+def faire_request_avec_result(conn: sqlite3.Connection, query: str) -> list[any]:
+    #print(query)
+    
+    cur = conn.cursor()
+    cur.execute(query)
+    return cur.fetchall()
+    

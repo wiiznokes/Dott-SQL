@@ -5,7 +5,7 @@ INSERT INTO Clients
 VALUES (1, "Montaigné", "Gilbert", '1990-03-04', "38 allée d'Ahm");
 
 INSERT INTO Clients 
-VALUES (2, "Rousseau", "Lénaic", '2002-11-04', "38 allée d'Ahm");
+VALUES (2, "Rousseau", 'Lénaic', '2002-11-04', "38 allée d'Ahm");
 
 INSERT INTO Clients 
 VALUES (3, "Garcia", "Giulio", '2000-08-06', "15 Gabriel Peri");
@@ -72,5 +72,3 @@ VALUES (3, 2);
 
 INSERT INTO LocationsTrottinettes 
 VALUES (3, 1);
-
----DELETE FROM LocationsTrottinettes WHERE numero_location=3 AND numero_trottinette=1;

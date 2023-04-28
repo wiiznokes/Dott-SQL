@@ -71,8 +71,7 @@ CREATE TABLE Locations(
 	date_dep_location date NOT NULL,
 	adresse_dep_location TEXT(50) NOT NULL, 
 	adresse_arr_location TEXT(50),
-	date_arr_location date, 
-	--prixTotal_location REAL, 
+	date_arr_location date,
 	numero_client TEXT(50) NOT NULL,
 	numero_employe INTEGER NOT NULL,
 
