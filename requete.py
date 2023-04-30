@@ -169,7 +169,7 @@ def creer_location(conn):
 
     print("Saisissez le modèle voulu.")
     for index, e in enumerate(modeles):
-        l = f'''{index} - {e[0]} ({e[1]}, {e[2]}, {e[3]})'''
+        l = f'''{index} - {e[0]} ({e[1]} €, {e[2]} km/h, {e[3]})'''
         print(l)
     
     while True:
@@ -275,7 +275,8 @@ def creer_location(conn):
 
 
 
-
+def finir_location(conn):
+    print("hello")
 
 
 def client_qui_ont_loue_une_trott_modele_xiaomi(conn):

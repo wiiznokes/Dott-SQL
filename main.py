@@ -48,6 +48,8 @@ while choix != "q":
         requete.nouveau_client(conn)
     elif (choix == '4'):
         requete.creer_location(conn)
+    elif (choix == '5'):
+        requete.finir_location(conn)
     elif (choix == '6'):
         requete.client_qui_ont_loue_une_trott_modele_xiaomi(conn)
     elif (choix == 'q'):
