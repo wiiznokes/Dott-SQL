@@ -301,5 +301,97 @@ def client_qui_ont_loue_une_trott_modele_xiaomi(conn):
     
     input()
 
-#def avoir_employe_dispo(date):
+
+
+def employe_qui_ont_loue_trott(conn):
+
+    utils.clear()
+
+    request = f'''
+    SELECT  DISTINCT nom_employe, prenom_employe
+    FROM Employes JOIN Locations USING(numero_employe);
+
+    '''
+
+    db.faire_request(conn, request)
     
+    input()    
+
+
+
+
+#def avoir_employe_dispo(date):
+def employe_qui_non_ont_pas_loue_trott(conn):
+    utils.clear()
+
+    request = f'''
+    SELECT nom_employe, prenom_employe
+    FROM  Employes
+    EXCEPT
+    SELECT nom_employe, prenom_employe
+    FROM Employes JOIN Locations USING(numero_employe);
+
+    '''
+
+    db.faire_request(conn, request)
+    
+    input()    
+
+def nombre_employe_total(conn):
+    utils.clear()
+
+    request = f'''
+    SELECT Count(numero_employe)
+    FROM  Employes;
+
+    '''
+
+    db.faire_request(conn, request)
+    
+    input()    
+
+def numero_trottinette_couleur_bleu(conn):
+    utils.clear()
+
+    request = f'''
+    SELECT numero_trottinette,date_fabrication_trottinette,etat_trottinette,nom_modele,couleur_modele
+    FROM  Trottinettes JOIN Modeles USING(nom_modele)
+    WHERE couleur_modele='bleu';
+
+    '''
+
+    db.faire_request(conn, request)
+    
+    input()    
+
+def nom_prenom_date_location_premier_client(conn):
+    utils.clear()
+
+    request = f'''
+    SELECT DISTINCT nom_client, prenom_client, date_dep_location
+    FROM Clients JOIN Locations USING(numero_client)
+    WHERE numero_location=1;
+
+
+    '''
+
+    db.faire_request(conn, request)
+    
+    input()    
+
+def nom_prenom_du_client_effectue_exactement_deux_reservation(conn):
+    utils.clear()
+
+    request = f'''
+    SELECT nom_client, prenom_client
+    FROM Clients JOIN Locations USING(numero_client)
+    GROUP BY nom_client,prenom_client
+    HAVING COUNT (numero_location) =2;
+
+
+    '''
+
+    db.faire_request(conn, request)
+    
+    input()    
+
