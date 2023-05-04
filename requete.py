@@ -4,8 +4,6 @@ from utils import utils, db, date
 from datetime import datetime
 
 
-adresse_magasin = "12 Bis Rue de Kérogan, Grenoble"
-
 def get_info_client(conn):
     utils.clear()
 
@@ -98,7 +96,7 @@ def creer_location(conn):
                 request = f'''
                 SELECT numero_location
                 FROM Locations
-                WHERE numero_client = {choix} and adresse_arr_location IS NULL;
+                WHERE numero_client = {choix} and date_arr_location IS NULL;
                 '''
                 locations = db.faire_request_avec_result(conn, request)
 
@@ -251,7 +249,7 @@ def creer_location(conn):
 
     insert = f'''
     INSERT INTO Locations 
-    VALUES ({numero_location}, '{date_dep_location}', '{adresse_magasin}', NULL, NULL, {numero_client}, {numero_employe});
+    VALUES ({numero_location}, '{date_dep_location}', NULL, {numero_client}, {numero_employe});
     '''
     db.faire_request(conn, insert)
     insert = f'''
@@ -276,7 +274,60 @@ def creer_location(conn):
 
 
 def finir_location(conn):
-    print("hello")
+    utils.clear()
+    print("******************************************************************************")
+    print("                               FINIR LOCATION                                 ")
+    print("******************************************************************************")
+
+    print("Saisissez votre numero client")
+    while True:
+        choix = input()
+
+        if (choix == 'q'):
+            return
+
+        if (choix.isdigit()):
+            choix = int(choix)
+            request = f'''
+            SELECT MAX(numero_client)
+            FROM Clients
+            '''
+            numero_client_max = int(db.faire_request_avec_result(conn, request)[0][0])
+
+            if (choix > 0 and choix <= numero_client_max):
+                # numero client valid, check si un location est déjà en cours
+                request = f'''
+                SELECT numero_location
+                FROM Locations
+                WHERE numero_client = {choix} and date_arr_location IS NULL;
+                '''
+                locations = db.faire_request_avec_result(conn, request)
+
+                if (len(locations) != 1):
+                    input("Aucune location en cours.")
+                    return
+                else:
+                    break
+            else:
+                print("Le numero client saisi n'exite pas. Veuillez en redonner un autre")
+            
+    
+    numero_location = locations[0][0]
+    numero_client = choix
+
+    date_arr_location = datetime.now()
+
+    update = f'''
+    UPDATE Locations
+    SET date_arr_location = '{date_arr_location}'
+    WHERE numero_location = {numero_location};
+    '''
+
+    db.faire_request(conn, update)
+
+    print("Vous avez bien terminer votre location.")
+    print("Durée: , Prix: ")
+    input()
 
 
 def client_qui_ont_loue_une_trott_modele_xiaomi(conn):

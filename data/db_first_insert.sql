@@ -16,7 +16,7 @@ VALUES (4, "Salina", "Martha", '2003-07-02', "13 Rue de la Republique");
 
 INSERT INTO Employes 
 VALUES (1, "Montaigné", "Albert", '1991-03-04', "37 allée d'Ahm", 
-"10h30,12h00 | 13h30,17h30 : 13h30,17h30 | : | : | 13h30,17h30 : |13h30,17h30 : |: |");
+"10h30,12h00 | 13h30,17h30 : 13h30,17h30 | : | : | 13h30,22h30 : |13h30,17h30 : |: |");
 
 INSERT INTO Employes 
 VALUES (2, "Perez", "Rafaela", '2000-03-05', "14 Rue Colonel", 
@@ -89,14 +89,14 @@ VALUES (5, '2012-01-01', "bon", "fast", 6);
 
 
 INSERT INTO Locations 
-VALUES (1, '2022-03-04 17:50', "77 rue allié", NULL, NULL, 1, 1);
+VALUES (1, '2022-03-04 17:50', NULL, 1, 1);
 
 
 INSERT INTO Locations 
-VALUES (2, '2022-03-04 18:50', "77 rue allié", "88 place du peuple", "2022-03-04 20:20", 1, 1);
+VALUES (2, '2022-03-04 18:50', "2022-03-04 20:20", 1, 1);
 
 INSERT INTO Locations 
-VALUES (3, '2022-03-04 13:00', "77 rue allié", "88 place du peuple", "2022-03-04 15:00", 4, 2);
+VALUES (3, '2022-03-04 13:00', "2022-03-04 15:00", 4, 2);
 
 
 -------------------------------------------------------
