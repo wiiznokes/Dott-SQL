@@ -1,4 +1,5 @@
 
+DROP VIEW LocationsPrixTotal;
 
 DROP TABLE LocationsTrottinettes;
 DROP TABLE Locations;
