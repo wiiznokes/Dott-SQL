@@ -12,8 +12,7 @@ utils.remove_file(db_file)
 conn = db.creer_connexion(db_file)
 db.mise_a_jour_bd(conn, "data/db_creation.sql")
 db.mise_a_jour_bd(conn, "data/db_first_insert.sql")
-
-
+db.mise_a_jour_bd(conn, "data/db_view.sql")
 
 
 
@@ -38,6 +37,7 @@ while choix != "q":
     print("10 -Numero de trottinette avec le couleur bleu")  
     print("11 -Nom, prenom et la date du clients qui a fait la premier location") 
     print("12 -Nom et prenom du client qui a effectue exactement deux location")
+    print("13 -Prix cumulé de toute les locations en € (utilise la view)")
 
     print("q - Quitter")
     print("******************************************************************************")
@@ -71,7 +71,9 @@ while choix != "q":
         requete.nom_prenom_date_location_premier_client(conn)    
     elif (choix == '12'):
         requete.nom_prenom_du_client_effectue_exactement_deux_reservation(conn)
-        
+    elif (choix == '13'):
+        requete.prix_cumule_toute_locations(conn)
+
     elif (choix == 'q'):
         break
 

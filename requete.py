@@ -313,7 +313,6 @@ def finir_location(conn):
             
     
     numero_location = locations[0][0]
-    numero_client = choix
 
     date_arr_location = datetime.now()
 
@@ -326,7 +325,15 @@ def finir_location(conn):
     db.faire_request(conn, update)
 
     print("Vous avez bien terminer votre location.")
-    print("Durée: , Prix: ")
+
+    request = f'''
+    SELECT prix_total_location, duree_location
+    FROM LocationsPrixTotal
+    WHERE numero_location = {numero_location};
+    '''
+    info_location = db.faire_request_avec_result(conn, request)
+   
+    print(f"Durée: {info_location[0][1]} minutes, Prix: {info_location[0][0]} €")
     input()
 
 
@@ -438,11 +445,22 @@ def nom_prenom_du_client_effectue_exactement_deux_reservation(conn):
     FROM Clients JOIN Locations USING(numero_client)
     GROUP BY nom_client,prenom_client
     HAVING COUNT (numero_location) =2;
-
-
     '''
 
     db.faire_request(conn, request)
     
     input()    
 
+
+
+def prix_cumule_toute_locations(conn):
+    utils.clear()
+
+    request = f'''
+    SELECT SUM(prix_total_location) AS somme_prix_locations
+    FROM LocationsPrixTotal;
+    '''
+    
+    db.faire_request(conn, request)
+    
+    input()

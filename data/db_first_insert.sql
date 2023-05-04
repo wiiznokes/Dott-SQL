@@ -57,13 +57,13 @@ VALUES (6, "moyen");
 
 
 INSERT INTO Modeles 
-VALUES ("fast", "blanc", 60, 11, 7);
+VALUES ("fast", "blanc", 60, 11, 0.11);
 
 INSERT INTO Modeles 
-VALUES ("xiaomi", "rouge", 25, 10, 6);
+VALUES ("xiaomi", "rouge", 25, 10, 0.22);
 
 INSERT INTO Modeles 
-VALUES ("MOBYGUM", "bleu", 65, 12, 9);
+VALUES ("MOBYGUM", "bleu", 65, 12, 0.22);
 
 
 -------------------------------------------------------

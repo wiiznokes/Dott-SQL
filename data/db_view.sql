@@ -1,43 +1,12 @@
 
 
-CREATE VIEW LocationsPrixTotal(numero_location, date_dep_location, date_arr_location,adresse_dep_location, 
-	adresse_arr_location,  numero_client, numero_employe, prix_total_location, duree)AS
-	WITH LocationsPrixTotalTrottinette AS(
-	SELECT numero_location, date_dep_location, date_arr_location,adresse_dep_location, 
-	adresse_arr_location,  
-	numero_client,
-	numero_employe,
-    (julianday(date_arr_location)-julianday(date_dep_location)) * 24 * 60 AS duree
-    FROM Locations
-    GROUP by numero_location, 
-	date_dep_location, 
-	date_arr_location,
-	adresse_dep_location, 
-	adresse_arr_location,  
-	numero_client,
-	numero_employe
-	),
-    PrixChaqueModeleTrottinette AS(
-        SELECT numero_trottinette, SUM(prix_modele+prix_par_minutes_modele) AS PrixTrotinette
-        FROM Modeles JOIN Trottinettes USING(nom_modele)
-        GROUP BY numero_trottinette
-    )  
-    SELECT numero_location,
-    date_dep_location, 
-    date_arr_location,
-    adresse_dep_location, 
-	adresse_arr_location,  
-	numero_client,
-	numero_employe,
-    Sum(duree*PrixTrotinette) AS prix_total_location,
-	duree
-	FROM  PrixChaqueModeleTrottinette JOIN LocationsTrottinettes USING (numero_trottinette) JOIN LocationsPrixTotalTrottinette USING(numero_location)
-    GROUP by numero_location, 
-	date_dep_location, 
-	date_arr_location,
-	adresse_dep_location, 
-	adresse_arr_location,  
-	numero_client,
-	numero_employe,
-	duree;
-
+CREATE VIEW LocationsPrixTotal AS
+SELECT L.numero_location,
+	SUM(M.prix_modele + M.prix_par_minutes_modele * ((julianday(L.date_arr_location) - julianday(L.date_dep_location)) * 24 * 60)) 
+		AS prix_total_location,
+	(julianday(L.date_arr_location) - julianday(L.date_dep_location)) * 24 * 60 AS duree_location
+FROM Locations L
+JOIN LocationsTrottinettes LT ON L.numero_location = LT.numero_location
+JOIN Trottinettes T ON LT.numero_trottinette = T.numero_trottinette
+JOIN Modeles M ON T.nom_modele = M.nom_modele
+GROUP BY L.numero_location;
