@@ -90,8 +90,3 @@ CREATE TABLE LocationsTrottinettes(
 	CONSTRAINT fk_locations_trottinettes_numero_trottinette FOREIGN KEY(numero_trottinette) 
 		REFERENCES Trottinettes(numero_trottinette)				
 );
-
-
-
-
-
