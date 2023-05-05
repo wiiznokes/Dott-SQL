@@ -464,3 +464,15 @@ def prix_cumule_toute_locations(conn):
     db.faire_request(conn, request)
     
     input()
+
+    print("prix et duree de chaque location")
+
+    request = f'''
+    SELECT numero_location, prix_total_location, duree_location
+    FROM LocationsPrixTotal
+    WHERE date_arr_location IS NOT NULL;
+    '''
+    
+    db.faire_request(conn, request)
+    
+    input()

@@ -89,7 +89,7 @@ VALUES (5, '2012-01-01', "bon", "fast", 6);
 
 
 INSERT INTO Locations 
-VALUES (1, '2022-03-04 17:50', NULL, 1, 1);
+VALUES (1, '2023-05-05 14:00', NULL, 1, 1);
 
 
 INSERT INTO Locations 
