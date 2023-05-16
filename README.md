@@ -1,5 +1,6 @@
-# ProjetTrottinette-INF403
+# Projet scolaire en SQL
 
+Le modèle est dans le dossier doc
 
 
 Les inserts incorrects sont dans le fichier db_insert_incorrect.sql.
